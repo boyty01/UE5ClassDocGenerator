@@ -15,3 +15,6 @@ The parser uses a common state machine setup to detect where it is along a parti
 ### Member types
 - UFUNCTION
 - UPROPERTY
+
+## Debug info
+Since this is still WIP, there are issues where the parser can fail to recognise certain values within different states. To avoid the app crashing, the state machine handles failures by moving corrupt containers to the FailLogger which is then dumped to a file for debugging. If you find certain objects are missing from your data, check the fail dump for the partial objects to help narrow down what's causing the issue.  Typically, this just requires the function to be updated to cater for additional patterns that the existing regex is failing to encompass.  Hopefully, as time goes on, these issues will be reduced down to extremely small edge cases.
